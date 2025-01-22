@@ -1,0 +1,92 @@
+---
+openapi: 3.0.1
+info:
+  title: API V1
+  version: v1
+paths:
+  "/beers":
+    get:
+      summary: Retrieves all beers
+      tags:
+      - Beers
+      responses:
+        '200':
+          description: beers found
+        '404':
+          description: beers not found
+    post:
+      summary: Creates a beer
+      tags:
+      - Beers
+      parameters: []
+      responses:
+        '201':
+          description: beer created
+        '422':
+          description: invalid request
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                style:
+                  type: string
+              required:
+              - name
+              - style
+  "/beers/{id}":
+    parameters:
+    - name: id
+      in: path
+      required: true
+      schema:
+        type: string
+    get:
+      summary: Retrieves a beer
+      tags:
+      - Beers
+      responses:
+        '200':
+          description: beer found
+        '404':
+          description: beer not found
+    put:
+      summary: Updates a beer
+      tags:
+      - Beers
+      parameters: []
+      responses:
+        '200':
+          description: beer updated
+        '404':
+          description: beer not found
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                style:
+                  type: string
+              required:
+              - name
+              - style
+    delete:
+      summary: Deletes a beer
+      tags:
+      - Beers
+      responses:
+        '204':
+          description: beer deleted
+        '404':
+          description: beer not found
+servers:
+- url: https://{defaultHost}
+  variables:
+    defaultHost:
+      default: pubapi.servebeer.com
