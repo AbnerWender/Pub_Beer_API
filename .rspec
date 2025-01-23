@@ -1,0 +1,6 @@
+--require spec_helper
+--color                # Ativa a saída colorida
+--format documentation # Formato de saída detalhado
+--fail-fast           # Para a execução ao encontrar a primeira falha
+--order random        # Executa os testes em ordem aleatória
+--profile             # Mostra os testes mais lentos

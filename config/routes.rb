@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 Rails.application.routes.draw do
   # Monta as engines do Rswag para a documentação da API
   mount Rswag::Ui::Engine => '/api-docs'
@@ -13,8 +15,5 @@ Rails.application.routes.draw do
 
   resources :food_pairings # Rota independente para food pairings.
 
-	get '/coverage', to: 'coverage#index'
-
+  get '/coverage', to: 'coverage#index'
 end
-
-

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class FoodPairingsController < ApplicationController
   def index
     @food_pairings = FoodPairing.all
@@ -38,3 +40,4 @@ class FoodPairingsController < ApplicationController
   def food_pairing_params
     params.require(:food_pairing).permit(:description, :beer_id)
   end
+end

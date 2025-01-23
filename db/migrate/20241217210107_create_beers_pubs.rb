@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreateBeersPubs < ActiveRecord::Migration[6.0]
   def change
     create_table :beers_pubs do |t|
@@ -7,6 +9,6 @@ class CreateBeersPubs < ActiveRecord::Migration[6.0]
       t.timestamps
     end
 
-    add_index [ :beer_id, :pub_id ], unique: true
+    add_index %i[beer_id pub_id], unique: true
   end
 end

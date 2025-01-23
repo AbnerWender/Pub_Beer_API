@@ -1,17 +1,20 @@
+# frozen_string_literal: true
+
+require 'rswag/specs'
+
 get 'Retrieves a food pairing' do
-    tags 'Food Pairings'
-    produces 'application/json'
+  tags 'Food Pairings'
+  produces 'application/json'
 
-    response '200', 'food pairing found' do
-      let(:id) { FoodPairing.create(description: 'Pizza', beer_id: 1).id }
-      run_test!
-    end
+  response '200', 'food pairing found' do
+    let(:id) { FoodPairing.create(description: 'Pizza', beer_id: 1).id }
+    run_test!
+  end
 
-    response '404', 'food pairing not found' do
-      let(:id) { 'invalid' }
-      run_test!
-    end
-
+  response '404', 'food pairing not found' do
+    let(:id) { 'invalid' }
+    run_test!
+  end
 
   put 'Updates a food pairing' do
     tags 'Food Pairings'
@@ -22,7 +25,7 @@ get 'Retrieves a food pairing' do
         description: { type: :string },
         beer_id: { type: :integer }
       },
-      required: [ 'description', 'beer_id' ]
+      required: %w[description beer_id]
     }
 
     response '200', 'food pairing updated' do
@@ -50,3 +53,4 @@ get 'Retrieves a food pairing' do
       let(:id) { 'invalid' }
     end
   end
+end
